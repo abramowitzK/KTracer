@@ -77,6 +77,8 @@ public:
 		const Vec3f &ec = 0) :
 		center(c), radius(r), radius2(r * r), surfaceColor(sc), emissionColor(ec),
 		transparency(transp), reflection(refl)
+	{
+	}
 		bool intersect(const Vec3f &rayorig, const Vec3f &raydir, float &t0, float &t1) const
 	{
 		Vec3f l = center - rayorig;
@@ -91,7 +93,7 @@ public:
 		return true;
 	}
 };
-#define MAX_RAY_DEPTH 5 
+#define MAX_RAY_DEPTH 3
 
 float mix(const float &a, const float &b, const float &mix)
 {
