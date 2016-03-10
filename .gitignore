@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+*.exe
+*.ilk
+/KTracer/KTracer/Debug
+/KTracer/KTracer/Release
+/KTracer/KTracer/untitled.ppm
+/KTracer/KTracer/Log.txt
+*.iobj
+/KTracer/Release
+/KTracer/KTracer.opensdf
+/KTracer/KTracer.sdf
