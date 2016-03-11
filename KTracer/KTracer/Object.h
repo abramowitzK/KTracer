@@ -15,11 +15,11 @@ enum class ObjectType {
 class Object
 {
 public:
-	Object(vec4 pos, quat rotation, float scale);
+	Object(vec3 pos, quat rotation, float scale);
 	virtual ~Object();
 	virtual ObjectType GetType();
-private:
-	vec4 m_pos;
+protected:
+	vec3 m_pos;
 	quat m_rot;
 	float m_uniformScale;
 

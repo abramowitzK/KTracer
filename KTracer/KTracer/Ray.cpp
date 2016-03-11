@@ -1,4 +1,5 @@
 #include "Ray.h"
+#include "Sphere.h"
 #include "Scene.h"
 
 Ray::Ray(){
@@ -15,7 +16,22 @@ Ray::Ray(glm::vec3 start, glm::vec3 dir){
 Ray::~Ray(){
 
 }
-
 glm::vec3 Ray::Trace(Scene s, int d){
-	return glm::vec3();
+	for (Object* obj : s.GetObjects()) {
+		if (obj->GetType() == ObjectType::Sphere) {
+			Sphere* s = dynamic_cast<Sphere*>(obj);
+			if (s->Intersect(*this)) {
+				return vec3(1.0, 0.5, 0.5);
+			}
+		}
+	}
+	return vec3(1.0, 1.0, 1.0);
+}
+
+vec3 Ray::Origin() const{
+	return m_start;
+}
+
+vec3 Ray::Dir() const{
+	return m_dir;
 }

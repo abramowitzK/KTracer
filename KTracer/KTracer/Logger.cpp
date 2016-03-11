@@ -17,7 +17,7 @@ void Logger::Log(string Message) {
 	date[strcspn(date, "\n")] = 0;
 	ostringstream os = ostringstream();
 	os << "[" <<  date << "]: " << Message << "\n";
-	s_log << os.str() << endl;
+	s_log << os.str();
 }
 
 void Logger::Shutdown(){
