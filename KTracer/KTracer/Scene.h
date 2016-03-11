@@ -5,6 +5,7 @@
 #include "Object.h"
 #include "Ray.h"
 #include "Sphere.h"
+#include "TriangleMesh.h"
 using namespace std;
 using namespace glm;
 class Scene
@@ -16,6 +17,9 @@ public:
 	const vector<Object*> & GetObjects() const;
 	void AddSphere(Sphere* s) {
 		m_objects.push_back(s);
+	}
+	void AddTriangleMesh(TriangleMesh* t) {
+		m_objects.push_back(t);
 	}
 private:
 	Camera m_camera;

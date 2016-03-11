@@ -157,7 +157,10 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SMFMeshLoader.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
+    <ClCompile Include="TriangleMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -166,7 +169,10 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SMFMeshLoader.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="StringUtil.h" />
+    <ClInclude Include="TriangleMesh.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
