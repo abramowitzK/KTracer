@@ -22,8 +22,8 @@ void Image::WriteToPPM(string FileName){
 	Logger::Log("Beginning to write to PPM");
 	std::ofstream ofs(FileName, ios::out | ios::binary);
 	ofs << "P6\n" << m_width << " " << m_height << "\n255\n";
-	for (int i = 0; i < m_height; i++) {
-		for (int j = 0; j < m_width; j++)
+	for (int i = 0; i < m_width; i++) {
+		for (int j = 0; j < m_height; j++)
 		ofs << (unsigned char)(min(1.0f, m_data[i][m_height-j-1].x) * 255) <<
 			(unsigned char)(min(1.0f, m_data[i][m_height - j - 1].y) * 255) <<
 			(unsigned char)(min(1.0f, m_data[i ][m_height - j - 1].z) * 255);
