@@ -8,6 +8,8 @@ SMFMeshLoader::SMFMeshLoader() {
 	m_resourceMap = std::map<std::string, TriangleMesh>();
 }
 
+SMFMeshLoader::~SMFMeshLoader() {}
+
 void SMFMeshLoader::LoadFile(std::string filename) {
 	//Create an input filestream
 	std::ifstream in;

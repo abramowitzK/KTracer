@@ -3,7 +3,7 @@
 
 
 Scene::Scene(){
-	m_camera = Camera(vec3(8.0, 0.0, 0.0), vec3(0.0, 1.0, 0.0), vec3(1.0, 0.0, 0.0), 70.0, 10.0);
+	m_camera = Camera(vec3(0.0, 0.0, -8.0), vec3(0.0, 1.0, 0.0), vec3(0.0, 0.0, 1.0), 70.0, 10.0);
 }
 
 
@@ -20,6 +20,10 @@ Image* Scene::Render()
 			im->Set(i,j, rays[i][j].Trace(*this, 1));
 		}
 	}
+	for (int i = 0; i < 1024; i++) {
+		delete[] rays[i];
+	}
+	delete rays;
 	return im;
 }
 

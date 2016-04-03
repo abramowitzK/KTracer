@@ -8,11 +8,11 @@ int main() {
 	const string FILEPATH = "Log.txt";
 	Logger::InitLogger(FILEPATH);
 	SMFMeshLoader loader = SMFMeshLoader();
-	loader.LoadFile("bound-bunny_1k.smf");
-	//TriangleMesh mesh = loader.GetMesh("bound-bunny_1k.smf");
+	loader.LoadFile("box.smf");
+	TriangleMesh mesh = loader.GetMesh("box.smf");
 	Scene scene = Scene();
-	scene.AddSphere(new Sphere(vec3(16.0, 0.0, 0.0), quat(), 1.0, 1.0));
-	//scene.AddTriangleMesh(&mesh);
+	//scene.AddSphere(new Sphere(vec3(16.0, 0.0, 0.0), quat(), 1.0, 1.0));
+	scene.AddTriangleMesh(&mesh);
 	Image* i = scene.Render();
 	i->WriteToPPM("image.ppm");
 	Logger::Shutdown();

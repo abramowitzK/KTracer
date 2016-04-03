@@ -13,6 +13,7 @@ using namespace glm;
 class SMFMeshLoader {
 public:
 	SMFMeshLoader();
+	~SMFMeshLoader();
 	void LoadFile(std::string filename);
 	TriangleMesh GetMesh(std::string filename);
 private:
