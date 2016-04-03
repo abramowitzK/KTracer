@@ -13,7 +13,7 @@ public:
 	TriangleMesh();
 	TriangleMesh(vector<vec4> vertices, vector<unsigned> indices);
 	~TriangleMesh();
-	bool Intersect(const Ray& ray);
+	bool Intersect(const Ray& ray, float & tmin, vec3 & intPoint, vec3 & normal);
 	virtual ObjectType GetType() override;
 private:
 	bool RayIntersectsTriangle(const Ray& ray, vec3 v1, vec3 v2, vec3 v3, float & t);

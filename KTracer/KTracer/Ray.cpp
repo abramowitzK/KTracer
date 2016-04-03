@@ -17,22 +17,36 @@ Ray::Ray(glm::vec3 start, glm::vec3 dir){
 Ray::~Ray(){
 
 }
-glm::vec3 Ray::Trace(Scene s, int d){
+glm::vec4 Ray::Trace(Scene s, int d){
+	float tmin = INFINITY - 1e6;
+	float closestTmin = INFINITY;
+	vec3 inter;
+	vec3 norm;
+	Object* closestObj = nullptr;
 	for (Object* obj : s.GetObjects()) {
-		if (obj->GetType() == ObjectType::Sphere) {
-			Sphere* s = dynamic_cast<Sphere*>(obj);
-			if (s->Intersect(*this)) {
-				return vec3(1.0, 0.5, 0.0);
-			}
-		}
-		else if (obj->GetType() == ObjectType::TriangleMesh) {
-			TriangleMesh* t = dynamic_cast<TriangleMesh*>(obj);
-			if (t->Intersect(*this)) {
-				return vec3(0.0, 0.0, 1.0);
+		//if (obj->GetType() == ObjectType::Sphere) {
+		//	Sphere* s = dynamic_cast<Sphere*>(obj);
+		//	if (s->Intersect(*this, tmin, inter, norm)) {
+		//		return vec3(1.0, 0.5, 0.0);
+		//	}
+		//}
+		//else if (obj->GetType() == ObjectType::TriangleMesh) {
+		//	TriangleMesh* t = dynamic_cast<TriangleMesh*>(obj);
+		//	if (t->Intersect(*this, tmin, inter, norm)) {
+		//		return vec3(0.0, 0.0, 1.0);
+		//	}
+		//}
+		if (obj->Intersect(*this, tmin, inter, norm)) {
+			if (tmin < closestTmin) {
+				closestObj = obj;
+				closestTmin = tmin;
 			}
 		}
 	}
-	return vec3(1.0, 1.0, 1.0);
+	if (closestObj != nullptr) {
+		return closestObj->GetColor();
+	}
+	return vec4(1.0, 1.0, 1.0, 1.0);
 }
 vec3 Ray::Origin() const{
 	return m_start;

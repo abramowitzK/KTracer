@@ -7,9 +7,10 @@ class Sphere :
 public:
 	Sphere(vec3 pos, quat rot, float scale, float radius);
 	~Sphere();
-	bool Intersect(const Ray& ray);
+	virtual bool Intersect(const Ray& ray, float& tmin, vec3 & intPoint, vec3 & normal) override;
 	virtual ObjectType GetType() override;
 private:
 	float m_radius;
+	float m_radiusSquared;
 };
 

@@ -5,17 +5,17 @@
 Image::Image(){
 	m_width = 640;
 	m_height = 480;
-	m_data = vector<vector<vec3>>(m_height);
+	m_data = vector<vector<vec4>>(m_height);
 	for (int i = 0; i < m_height; i++) {
-		m_data[i] = vector<vec3>(m_width);
+		m_data[i] = vector<vec4>(m_width);
 	}
 }
 Image::Image(unsigned height, unsigned width){
 	m_width = width;
 	m_height = height;
-	m_data = vector<vector<vec3>>(m_height);
+	m_data = vector<vector<vec4>>(m_height);
 	for (int i = 0; i < m_height; i++) {
-		m_data[i] = vector<vec3>(m_width);
+		m_data[i] = vector<vec4>(m_width);
 	}
 }
 void Image::WriteToPPM(string FileName){

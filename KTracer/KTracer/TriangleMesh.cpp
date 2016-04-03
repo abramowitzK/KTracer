@@ -2,10 +2,10 @@
 
 
 
-TriangleMesh::TriangleMesh() : Object(vec3(0, 0,0), quat(), 1.0){
+TriangleMesh::TriangleMesh() : Object(vec3(0, 0,0), quat(), 1.0, vec4(0, 0, 1.0, 1.0)){
 }
 
-TriangleMesh::TriangleMesh(vector<vec4> vertices, vector<unsigned> indices) : Object(vec3(0), quat(), 1.0) {
+TriangleMesh::TriangleMesh(vector<vec4> vertices, vector<unsigned> indices) : Object(vec3(0), quat(), 1.0, vec4(0, 0, 1.0, 1.0)) {
 	m_vertices = vertices;
 	m_indices = indices;
 }
@@ -14,13 +14,12 @@ TriangleMesh::TriangleMesh(vector<vec4> vertices, vector<unsigned> indices) : Ob
 TriangleMesh::~TriangleMesh(){
 }
 
-bool TriangleMesh::Intersect(const Ray & ray){
-	float t = -1e10;
+bool TriangleMesh::Intersect(const Ray & ray, float& tmin, vec3 & intPoint, vec3 & normal){
 	for (int i = 0; i < m_indices.size(); i += 3) {
 		vec4 v1 = m_vertices[m_indices[i]];
 		vec4 v2 = m_vertices[m_indices[i + 1]];
 		vec4 v3 = m_vertices[m_indices[1 + 2]];
-		if (RayIntersectsTriangle(ray, vec3(v1), vec3(v2), vec3(v3), t))
+		if (RayIntersectsTriangle(ray, vec3(v1), vec3(v2), vec3(v3), tmin))
 			return true;
 	}
 	return false;
