@@ -9,6 +9,7 @@ Object::Object(vec3 pos, quat rotation, float scale, vec4 color){
 Object::~Object(){
 }
 ObjectType Object::GetType(){
+
 	return ObjectType::None;
 }
 
@@ -18,4 +19,7 @@ vec3 & Object::GetPosition() {
 
 vec4 & Object::GetColor() {
 	return m_col;
+}
+void Object::SetColor(vec4 color) {
+	m_col = color;
 }

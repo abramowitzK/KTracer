@@ -54,3 +54,5 @@ bool Sphere::Intersect(const Ray & ray, float & tmin, vec3 & intPoint, vec3 & no
 ObjectType Sphere::GetType() {
 	return ObjectType::Sphere;
 }
+
+void Sphere::Rotate(float x, float y, float z) {}

@@ -14,7 +14,7 @@ void SMFMeshLoader::LoadFile(std::string filename) {
 	//Create an input filestream
 	std::ifstream in;
 	in.open(filename);
-	std::vector<vec4> vertices;
+	std::vector<vec3> vertices;
 	std::vector<unsigned> indices;
 	std::vector<vec4> colors;
 	std::vector<vec3> faceNormals;
@@ -37,11 +37,11 @@ void SMFMeshLoader::LoadFile(std::string filename) {
 	CalcFaceNormals(i,indices,vertices,faceNormals);
 	}*/
 	for (int i = 0; i < indices.size(); i += 3) {
-		vec4 p1 = vertices[indices[i]];
-		vec4 p2 = vertices[indices[i + 1]];
-		vec4 p3 = vertices[indices[i + 2]];
-		vec4 u = p2 - p1;
-		vec4 v = p3 - p1;
+		vec3 p1 = vertices[indices[i]];
+		vec3 p2 = vertices[indices[i + 1]];
+		vec3 p3 = vertices[indices[i + 2]];
+		vec3 u = p2 - p1;
+		vec3 v = p3 - p1;
 		vec3 n = cross(vec3(u), vec3(v));
 		faceNormals.push_back(vec3(n.x, n.y, n.z));
 	}
@@ -65,10 +65,10 @@ TriangleMesh SMFMeshLoader::GetMesh(std::string filename) {
 /**
 * Precondition - Line is a 3d vertex line (ie in format "v 1.0 2.0 3.0")
 */
-void SMFMeshLoader::ParseVertex(std::vector<vec4> &vertices, const std::string line) {
+void SMFMeshLoader::ParseVertex(std::vector<vec3> &vertices, const std::string line) {
 	//Split line on space delimiter
 	std::vector<std::string> split = splitLine(line, ' ');
-	vec4 ret = vec4(1.0);
+	vec3 ret = vec3(1.0);
 	for (int i = 1; i < 4; i++) {
 		ret[i - 1] = std::stof(split[i]);
 	}
@@ -83,13 +83,13 @@ void SMFMeshLoader::ParseFace(std::vector<unsigned> &indices, const std::string 
 }
 
 
-void SMFMeshLoader::CalcFaceNormals(int triangle, const std::vector<unsigned> &indices, const std::vector<vec4> &vertices, std::vector<vec3>& faceNormals) {
-	vec4 p1 = vertices[indices[triangle]];
-	vec4 p2 = vertices[indices[triangle + 1]];
-	vec4 p3 = vertices[indices[triangle + 2]];
-	vec4 u = p2 - p1;
-	vec4 v = p3 - p1;
-	vec3 n = cross(vec3(u), vec3(v));
+void SMFMeshLoader::CalcFaceNormals(int triangle, const std::vector<unsigned> &indices, const std::vector<vec3> &vertices, std::vector<vec3>& faceNormals) {
+	vec3 p1 = vertices[indices[triangle]];
+	vec3 p2 = vertices[indices[triangle + 1]];
+	vec3 p3 = vertices[indices[triangle + 2]];
+	vec3 u = p2 - p1;
+	vec3 v = p3 - p1;
+	vec3 n = cross(u, v);
 	faceNormals[triangle] = vec3(n.x, n.y, n.z);
 }
 void SMFMeshLoader::CalcVertexNormals(const std::vector<unsigned> &indices, const std::vector<vec3> &faceNormals, std::vector<vec3>& normals) {

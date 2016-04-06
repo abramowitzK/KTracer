@@ -20,8 +20,10 @@ public:
 	virtual ~Object();
 	virtual ObjectType GetType();
 	virtual bool Intersect(const Ray& ray, float & tmin, vec3 & intPoint, vec3 & normal) = 0;
+	virtual void Rotate(float x, float y, float z) = 0;
 	vec3& GetPosition();
 	vec4& GetColor();
+	void SetColor(vec4 color);
 protected:
 	vec4 m_col;
 	vec3 m_pos;

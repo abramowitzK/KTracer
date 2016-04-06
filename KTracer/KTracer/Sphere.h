@@ -12,5 +12,8 @@ public:
 private:
 	float m_radius;
 	float m_radiusSquared;
+
+	// Inherited via Object
+	virtual void Rotate(float x, float y, float z) override;
 };
 
