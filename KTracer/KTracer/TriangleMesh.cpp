@@ -73,6 +73,13 @@ bool TriangleMesh::RayIntersectsTriangle(const Ray & ray, vec3& v1, vec3 &v2, ve
 	return true;
 }
 
+void TriangleMesh::Translate(float x, float y, float z) {
+	auto m = glm::translate(vec3(x, y, z));
+	for (int i = 0; i < m_vertices.size(); i++) {
+		m_vertices[i] = vec3(m*vec4(m_vertices[i], 1.0));
+	}
+}
+
 void TriangleMesh::Rotate(float x, float y, float z) {
 	quat rot = glm::quat(glm::vec3(glm::radians(x), glm::radians(y), glm::radians(z)));
 	for (int i = 0; i < m_vertices.size(); i++) {

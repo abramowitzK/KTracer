@@ -15,5 +15,8 @@ private:
 
 	// Inherited via Object
 	virtual void Rotate(float x, float y, float z) override;
+
+	// Inherited via Object
+	virtual void Translate(float x, float y, float z) override;
 };
 

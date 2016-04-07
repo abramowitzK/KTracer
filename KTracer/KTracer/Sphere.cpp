@@ -56,3 +56,5 @@ ObjectType Sphere::GetType() {
 }
 
 void Sphere::Rotate(float x, float y, float z) {}
+
+void Sphere::Translate(float x, float y, float z) {}
