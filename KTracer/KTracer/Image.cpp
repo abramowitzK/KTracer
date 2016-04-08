@@ -30,5 +30,17 @@ void Image::WriteToPPM(string FileName){
 	}
 	Logger::Log("Finished writing to PPM");
 }
+void Image::WriteToPNG(string FileName) {  
+	std::vector<unsigned char> image;
+	image.resize(m_width * m_height * 4);
+	for(unsigned y = 0; y < m_height; y++)
+		for(unsigned x = 0; x < m_width; x++){
+			image[4 * m_width * y + 4 * x + 0] = (unsigned char)(m_data[y][m_height - x - 1].x*255);
+			image[4 * m_width * y + 4 * x + 1] = (unsigned char)(m_data[y][m_height - x - 1].y*255);
+			image[4 * m_width * y + 4 * x + 2] = (unsigned char)(m_data[y][m_height - x - 1].z*255);
+			image[4 * m_width * y + 4 * x + 3] = (unsigned char)255;
+		}
+	lodepng::encode(FileName, image, m_width, m_height);
+}
 Image::~Image(){
 }
