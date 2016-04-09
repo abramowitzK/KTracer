@@ -1,4 +1,6 @@
 #include <string>
+#include <cstdlib>
+#include <string>
 #include "Logger.h"
 #include "Scene.h"
 #include "SMFMeshLoader.h"
@@ -9,24 +11,24 @@ int main() {
 	Logger::InitLogger(FILEPATH);
 	SMFMeshLoader loader = SMFMeshLoader();
 	loader.LoadFile("bound-bunny_1k.smf");
-	loader.LoadFile("box.smf");
+	loader.LoadFile("teapot.smf");
 	TriangleMesh mesh = loader.GetMesh("bound-bunny_1k.smf");
-	mesh.Translate(0, 0, 0);
+	mesh.Translate(0, -1.5, 0);
 	mesh.SetColor(vec4(1.0, 1.0, 1.0, 1.0));
-	TriangleMesh mesh2 = loader.GetMesh("box.smf");
-	mesh2.Rotate(90.0, 0.0, 90.0);
-	mesh2.Translate(0, 0, 0);
+	TriangleMesh mesh2 = loader.GetMesh("teapot.smf");
+	mesh2.Translate(0, 0.75, 0);
 	mesh2.SetColor(vec4(1.0, 1.0, 1.0, 1.0));
 	Scene scene = Scene();
-	Sphere* s = new Sphere(vec3(4.0, 0.0, 0.0), quat(), 1.0, 0.25);
-	s->SetColor(vec4(1.0, 1.0, 0.0, 1.0));
+	Sphere* s = new Sphere(vec3(-3.0, 0.0, 0.0), quat(), 1.0, 0.25);
+	s->SetColor(vec4(1.0, 1.0, 1.0, 1.0));
 	scene.AddSphere(s);
-	Sphere* s2 = new Sphere(vec3(4.0, 0.0, 0.0), quat(), 1.0, 1.0);
+	Sphere* s2 = new Sphere(vec3(3.0, 0.0, 0.0), quat(), 1.0, 1.0);
 	s2->SetColor(vec4(1.0, 1.0, 1.0, 0.0));
-	//scene.AddSphere(s2);
+	scene.AddSphere(s2);
 	scene.AddTriangleMesh(&mesh);
-	//scene.AddTriangleMesh(&mesh2);
+	scene.AddTriangleMesh(&mesh2);
 	Image* i = scene.Render();
+	//Logger::Log("Rendering finished in: " + std::to_string(total) + " seconds.");
 	i->WriteToPNG("image.png");
 	Logger::Shutdown();
 	delete i;

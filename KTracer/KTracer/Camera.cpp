@@ -11,7 +11,7 @@ Camera::Camera(vec3 position, vec3 up, vec3 forward, float viewAngle, float dist
 	m_position = position;
 	m_up = normalize(up);
 	m_forward = normalize(forward);
-	m_right = normalize(cross(m_up, forward));
+	m_right = normalize(cross(m_forward, m_up));
 }
 
 Camera::~Camera(){
@@ -24,7 +24,7 @@ Ray ** Camera::GenerateRays(int hRes, int vRes)
 	for (int i = 0; i < hRes; i++) {
 		rays[i] = new Ray[vRes];
 	}
-	vec3 y = cross(m_forward, m_right);
+	vec3 y = m_up;
 	float s_j = m_distanceToPlane * 2 * tanf(m_viewAngle / 2.0f);
 	float s_k = s_j*(vRes / (float)hRes);
 	vec3 posOfPixel = m_position + (m_distanceToPlane * m_forward) - (((float)(s_j / 2.0)) * m_right) + (((float)(s_k / 2.0)) * y);

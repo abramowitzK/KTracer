@@ -13,5 +13,7 @@ public:
 	static void Shutdown();
 	static fstream s_log;
 	static bool s_isInitialized;
+	static double GetTime();
+	static std::chrono::system_clock::time_point s_epoch;
 };
 

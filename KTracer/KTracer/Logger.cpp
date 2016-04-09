@@ -26,3 +26,7 @@ void Logger::Shutdown(){
 		s_log.close();
 	}
 }
+
+double Logger::GetTime() {
+
+}
