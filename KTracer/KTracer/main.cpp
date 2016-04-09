@@ -1,6 +1,7 @@
 #include <string>
 #include <cstdlib>
 #include <string>
+#include <chrono>
 #include "Logger.h"
 #include "Scene.h"
 #include "SMFMeshLoader.h"
@@ -27,8 +28,12 @@ int main() {
 	scene.AddSphere(s2);
 	scene.AddTriangleMesh(&mesh);
 	scene.AddTriangleMesh(&mesh2);
+	auto start = chrono::high_resolution_clock::now();
 	Image* i = scene.Render();
-	//Logger::Log("Rendering finished in: " + std::to_string(total) + " seconds.");
+	auto end = chrono::high_resolution_clock::now();
+	auto total = end - start;
+	float total2 = total.count() / 1.0e9;
+	Logger::Log("Rendering finished in: " + std::to_string(total2) + " seconds.");
 	i->WriteToPNG("image.png");
 	Logger::Shutdown();
 	delete i;
