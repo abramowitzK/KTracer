@@ -1,9 +1,9 @@
 #pragma once
-#include <glm\vec3.hpp>
-#include <glm\vec4.hpp>
-#include <glm\common.hpp>
-#include <glm\gtx\rotate_vector.hpp>
-#include <glm\gtx\transform.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/common.hpp>
+#include <glm/gtx/rotate_vector.hpp>
+#include <glm/gtx/transform.hpp>
 #include <vector>
 #include <string>
 #include <cstdlib>

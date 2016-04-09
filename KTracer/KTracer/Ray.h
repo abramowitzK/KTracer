@@ -1,8 +1,8 @@
 #pragma once
-#include <glm\vec3.hpp>
-#include <glm\common.hpp>
-#include <glm\geometric.hpp>
-#include <Map>
+#include <glm/vec3.hpp>
+#include <glm/common.hpp>
+#include <glm/geometric.hpp>
+#include <map>
 class Scene;
 using namespace glm;
 class Ray

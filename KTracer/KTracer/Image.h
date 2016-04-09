@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
-#include <glm\vec4.hpp>
+#include <glm/vec4.hpp>
 #include <vector>
 #include "Logger.h"
 #include "LodePNG.h"
