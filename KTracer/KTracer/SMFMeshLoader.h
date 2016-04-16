@@ -5,8 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <glm\vec4.hpp>
-#include <glm\vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/vec3.hpp>
 #include "TriangleMesh.h"
 #include "StringUtil.h"
 using namespace glm;

@@ -1,9 +1,9 @@
 #pragma once
-#include <glm\vec4.hpp>
-#include <glm\vec3.hpp>
-#include <glm\geometric.hpp>
-#include <glm\common.hpp>
-#include <glm\glm.hpp>
+#include <glm/vec4.hpp>
+#include <glm/vec3.hpp>
+#include <glm/geometric.hpp>
+#include <glm/common.hpp>
+#include <glm/glm.hpp>
 #include "Ray.h"
 using namespace glm;
 class Camera
