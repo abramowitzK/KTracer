@@ -13,3 +13,9 @@
 /KTracer/Release
 /KTracer/KTracer.opensdf
 /KTracer/KTracer.sdf
+/KTracer/KTracer/x64
+/KTracer/KTracer/KTracer.vcxproj.user
+/KTracer/KTracer/image.png
+/KTracer/x64/Debug
+/KTracer/x64/Release/KTracer.pdb
+/KTracer/x64/Release/KTracer.ipdb
